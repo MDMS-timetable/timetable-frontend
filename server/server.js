@@ -26,31 +26,33 @@ timetable
 .then(() => {
     // 수업시간정보
     Promise.all([timetable.getTimetable()]).then((result) => {
-    console.log(result);
-    
-    // result[학년][반][요일][교시]
-    for (var i = 0; i < 8; i++) {
-        if (result[0][1][1][0][i].subject !== '')
-        console.log(result[0][1][1][0][i]);
-    }
+      console.log(result);
 
-    app.get('/timetable', function(req, res) {
-        // res.send(JSON.stringify(result[0][1][1][0]));
-        // JSON.stringify(result, null, 2);
-        // for (var i = 0; i < 8; i++) {
-        // if (result[0][1][1][0][i].subject !== '')
-        //     res.send(result[0][1][1][0][i]);
-        // }
-        res.json(result[0]);
-    });
+      // result[학년][반][요일][교시]
+      for (var i = 0; i < 8; i++) {
+          if (result[0][1][1][0][i].subject !== '')
+          console.log(result[0][1][1][0][i]);
+      }
+
+      app.get('/timetable', function(req, res) {
+          // res.send(JSON.stringify(result[0][1][1][0]));
+          // JSON.stringify(result, null, 2);
+          // for (var i = 0; i < 8; i++) {
+          // if (result[0][1][1][0][i].subject !== '')
+          //     res.send(result[0][1][1][0][i]);
+          // }
+          res.json(result[0]);
+      });
     });
 
     // 시간표
     Promise.all([timetable.getClassTime()]).then((result) => {
-    app.get('/schedule', function(req, res) {
-        res.send(result);
+      console.log(result);
+      app.get('/schedule', function(req, res) {
+          res.json(result);
+      });
     });
-    });
+
 
 });
 
