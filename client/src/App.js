@@ -4,15 +4,26 @@ import axios from 'axios';
 function App() {
 
   const [timetalbeData, setTimetableData] = useState(null)
+  const [scheduleData, setScheduleData] = useState(null)
 
-  const fetchData = async() => {
+  const fetchTimeTableData = async() => {
     setTimetableData(null);
     const response = await axios.get('http://localhost:2500/timetable')
     setTimetableData(response.data);
   }
 
+  const fetchScheduleData = async() => {
+    setScheduleData(null);
+    const response = await axios.get('http://localhost:2500/schedule')
+    setScheduleData(response.data);
+  }
+
   useEffect(() => {
-    fetchData();
+    fetchTimeTableData();
+  }, [])
+
+  useEffect(() => {
+    fetchScheduleData();
   }, [])
 
 }
