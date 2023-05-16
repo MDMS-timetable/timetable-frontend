@@ -27,7 +27,7 @@ timetable
     // 수업시간정보
     Promise.all([timetable.getTimetable()]).then((result) => {
       console.log(result);
-      
+
       // result[학년][반][요일][교시]
       for (var i = 0; i < 8; i++) {
           if (result[0][1][1][0][i].subject !== '')
@@ -41,7 +41,7 @@ timetable
           // if (result[0][1][1][0][i].subject !== '')
           //     res.send(result[0][1][1][0][i]);
           // }
-          res.json(result);
+          res.json(result[0]);
       });
     });
 
@@ -57,6 +57,6 @@ timetable
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+    console.log(`Example app listening on port ${port}`);
 });
 

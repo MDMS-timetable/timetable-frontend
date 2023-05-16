@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 
-function App() {
-
-  const [timetalbeData, setTimetableData] = useState(null)
+  
+    
+const App = () => {
+  const [timeTableData, setTimeTableData] = useState(null)
   const [scheduleData, setScheduleData] = useState(null)
 
   const fetchTimeTableData = async() => {
-    setTimetableData(null);
+    setTimeTableData(null);
     const response = await axios.get('http://localhost:2500/timetable')
-    setTimetableData(response.data);
+    setTimeTableData(response.data);
   }
 
   const fetchScheduleData = async() => {
@@ -17,7 +18,7 @@ function App() {
     const response = await axios.get('http://localhost:2500/schedule')
     setScheduleData(response.data);
   }
-
+  
   useEffect(() => {
     fetchTimeTableData();
   }, [])
@@ -26,6 +27,14 @@ function App() {
     fetchScheduleData();
   }, [])
 
+  console.log(timeTableData && timeTableData[1][1][0][0].teacher)
+
+  return (
+    <div>
+      
+    </div>
+  )
+  
 }
 
 export default App
