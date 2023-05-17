@@ -51,6 +51,7 @@ timetable
         const r_class = req.body.class;
         console.log(r_grade);
         console.log(r_class);
+        req.json(result[0][r_grade][r_class]);
       })
 
     });
