@@ -40,6 +40,7 @@ timetable
         const r_class = req.body.class;
         console.log("grade : " + r_grade); // react에서 받은 grade출력
         console.log("class : " + r_class); // react에서 받은 class출력
+        console.log("----------");
         res.json(result[0][r_grade][r_class]);
       })
 
