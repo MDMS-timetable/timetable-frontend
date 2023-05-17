@@ -19,16 +19,28 @@ const App = () => {
 
 
   // 시간표
-  axios.get('http://localhost:2500/schedule')
-  .then(response => {
-    setScheduleData(response.data[1])
-  })
-  .catch(error => {
-    console.error(error);
-  });
+  useEffect(() => {
+    axios.get('http://localhost:2500/schedule')
+    .then(response => {
+      setScheduleData(response.data[1])
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  },[])
+  
 
   const onHandle1_1 = () => {
-    axios.post('http://localhost:2500/viewtimetable',)
+    axios.post('http://localhost:2500/viewtimetable',11)
+    .then(
+      axios.get('http://localhost:2500/viewtimetable')
+      .then(response => {
+        setTimeTableData(response)
+      })
+      .catch(error => {
+        console.log(error);
+      })
+    )
     
   }
 
