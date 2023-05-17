@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import axios from 'axios';
 
-  
-    
 const App = () => {
-  const [timeTableData, setTimeTableData] = useState(null) // 수업시간정보
-  const [scheduleData, setScheduleData] = useState(null) // 시간표
+  const timeTableData = useRef();
+  const scheduleData = useRef();
 
   // 수업시간정보
   useEffect(() => {
     axios.get('http://localhost:2500/timetable')
       .then(response => {
-        setTimeTableData(response.data);
-        console.log(response.data);
+        timeTableData.current = (response.data);
+        console.log(timeTableData.current);
       })
       .catch(error => {
         console.error(error);
@@ -23,8 +21,8 @@ const App = () => {
   useEffect(() => {
     axios.get('http://localhost:2500/schedule')
       .then(response => {
-        setScheduleData(response.data);
-        console.log(response.data);
+        scheduleData.current = (response.data);
+        console.log(scheduleData.current);
       })
       .catch(error => {
         console.error(error);
@@ -36,7 +34,7 @@ const App = () => {
 
   return (
     <div>
-
+      
     </div>
   )
   
