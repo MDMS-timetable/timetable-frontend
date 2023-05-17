@@ -3,6 +3,10 @@ const cors = require('cors');
 const app = express();
 const port = 2500;
 const fs = require('fs');
+var bodyParser = require('body-parser');                                                                     
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended : false}));
+const axios = require('axios');
 
 const Timetable = require('comcigan-parser');
 const timetable = new Timetable();
@@ -43,13 +47,21 @@ timetable
           // }
           res.json(result[0]);
       });
+      
+      // grade, class post로 받아옴
+      app.post('/viewtimetable', function(req, res) {
+        console.log(req.body.grade);
+        console.log(req.body.class);
+        res.json(result[0][req.body.grade][req.body.class])
+      })
+
     });
 
     // 시간표
     Promise.all([timetable.getClassTime()]).then((result) => {
       console.log(result);
       app.get('/schedule', function(req, res) {
-          res.json(result);
+          res.json(result[0]);
       });
     });
 
