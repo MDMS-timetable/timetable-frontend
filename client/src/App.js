@@ -29,9 +29,13 @@ const App = () => {
     });
   },[])
   
+  const data = {
+    grade : 1,
+    class : 1,
+  }
 
   const onHandle1_1 = () => {
-    axios.post('http://localhost:2500/viewtimetable',11)
+    axios.post('http://localhost:2500/viewtimetable',data)
     .then(
       axios.get('http://localhost:2500/viewtimetable')
       .then(response => {
