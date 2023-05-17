@@ -47,8 +47,10 @@ timetable
       
       // grade, class post로 받아옴
       app.post('/viewtimetable', function(req, res) {
-        const recVal = req.body.value;
-        console.log(recVal);
+        const r_grade = req.body.grade;
+        const r_class = req.body.class;
+        console.log(r_grade);
+        console.log(r_class);
       })
 
     });
