@@ -1,9 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 2500;
+const port = 8080;
 const fs = require('fs');
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(cors());
 
 const Timetable = require('comcigan-parser');
 const timetable = new Timetable();
@@ -20,20 +21,20 @@ return targetSchool;
 };
 
 timetable
-.init({ cache: 1000 * 60 * 60 }) // 캐시 1시간동안 보관
+.init({ cache: 1000 * 60 * 30 }) // 캐시 30분동안 보관
 .then(() => timetable.search('만덕중학교'))
 .then(schoolFinder('만덕중학교', '만덕'))
 .then((school) => timetable.setSchool(59955))
 .then(() => {
     // 수업시간정보
     Promise.all([timetable.getTimetable()]).then((result) => {
-      console.log(result);
+      // console.log(result);
 
       // result[학년][반][요일][교시]
-      for (var i = 0; i < 8; i++) {
-          if (result[0][1][1][0][i].subject !== '')
-          console.log(result[0][1][1][0][i]);
-      }
+      // for (var i = 0; i < 8; i++) {
+      //     if (result[0][1][1][0][i].subject !== '')
+      //     console.log(result[0][1][1][0][i]);
+      // }
 
       app.get('/timetable', function(req, res) {
           // res.send(JSON.stringify(result[0][1][1][0]));
@@ -42,25 +43,25 @@ timetable
           // if (result[0][1][1][0][i].subject !== '')
           //     res.send(result[0][1][1][0][i]);
           // }
-          res.json(result[0]);
+          res.json(result[0]); // 수업시간정보 react로 보내기
       });
       
       // grade, class post로 받아옴
       app.post('/viewtimetable', function(req, res) {
         const r_grade = req.body.grade;
         const r_class = req.body.class;
-        console.log(r_grade);
-        console.log(r_class);
-        req.json(result[0][r_grade][r_class]);
+        console.log("grade : " + r_grade); // react에서 받은 grade출력
+        console.log("class : " + r_class); // react에서 받은 class출력
+        res.json(result[0][r_grade][r_class]);
       })
 
     });
 
     // 시간표
     Promise.all([timetable.getClassTime()]).then((result) => {
-      console.log(result);
+      // console.log(result);
       app.get('/schedule', function(req, res) {
-          res.json(result[0]);
+          res.json(result[0]); // 시간표 react로 보내기
       });
     });
 

@@ -7,7 +7,7 @@ const App = () => {
 
   // 수업시간정보
   useEffect(() => {
-    axios.get('http://localhost:2500/timetable')
+    axios.get('http://localhost:8080/timetable')
       .then(response => {
         setTimeTableData(response.data[1]);
       })
@@ -19,7 +19,7 @@ const App = () => {
 
   // 시간표
   useEffect(() => {
-    axios.get('http://localhost:2500/schedule')
+    axios.get('http://localhost:8080/schedule')
     .then(response => {
       setScheduleData(response.data[1])
     })
@@ -29,20 +29,19 @@ const App = () => {
   },[])
   
   const data = {
-    grade : 1,
-    class : 1,
+    grade : 3,
+    class : 3,
   }
 
   const onHandle1_1 = () => {
-    axios.post('http://localhost:2500/viewtimetable',data)
-    axios.get('http://localhost:2500/viewtimetable')
-    .then(response => {
-      setTimeTableData(response)
-      console.log(response)
-    })
-    .catch(error => {
-      console.log(error);
-    })
+    axios.post('http://localhost:8080/viewtimetable', data)
+      .then(response => {
+        setTimeTableData(response.data);
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   return (
