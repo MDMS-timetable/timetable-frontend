@@ -53,35 +53,21 @@ const App = () => {
   };
 
   useEffect(() => {
-    const storedGrade = localStorage.getItem('selectedGrade');
-    const storedClass = localStorage.getItem('selectedClass');
-
-    if (storedGrade && storedClass) {
-      setSelectedGrade(storedGrade);
-      setSelectedClass(storedClass);
-    }
-  }, []);
-
-  useEffect(() => {
     // 선택 값이 변경될 때마다 로컬 스토리지에 저장
     localStorage.setItem('selectedGrade', selectedGrade);
     localStorage.setItem('selectedClass', selectedClass);
-
-    // 이전 요청 취소
-    if (cancelToken) {
-      cancelToken.cancel('Previous request canceled');
-    }
-
-    // 요청 취소 토큰 생성
-    const source = axios.CancelToken.source();
-    setCancelToken(source);
-
+  
+    let source = axios.CancelToken.source();
+    let mounted = true;
+  
     // 선택 값이 존재할 경우에만 요청 보냄
     if (selectedGrade && selectedClass) {
       axios
         .post('http://localhost:8080/viewtimetable', { grade: selectedGrade, class: selectedClass }, { cancelToken: source.token })
         .then(response => {
-          setTimeTableData(response.data);
+          if (mounted) {
+            setTimeTableData(response.data);
+          }
         })
         .catch(error => {
           if (axios.isCancel(error)) {
@@ -91,7 +77,13 @@ const App = () => {
           }
         });
     }
-  }, [selectedGrade, selectedClass]);
+  
+    return () => {
+      // 클린업 시에 요청 취소
+      mounted = false;
+      source.cancel('Component unmounted');
+    };
+  }, [selectedGrade, selectedClass]);  
 
   // 요일 데이터를 HTML로 변환하여 반환하는 함수
   const renderDayData = () => {
