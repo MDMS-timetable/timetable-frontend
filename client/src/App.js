@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
 
 const App = () => {
@@ -15,8 +15,7 @@ const App = () => {
         console.error(error);
       });
   },[]);
-
-
+  
 
   // 시간표
   useEffect(() => {
@@ -36,16 +35,14 @@ const App = () => {
 
   const onHandle1_1 = () => {
     axios.post('http://localhost:2500/viewtimetable',data)
-    .then(
-      axios.get('http://localhost:2500/viewtimetable')
-      .then(response => {
-        setTimeTableData(response)
-      })
-      .catch(error => {
-        console.log(error);
-      })
-    )
-    
+    axios.get('http://localhost:2500/viewtimetable')
+    .then(response => {
+      setTimeTableData(response)
+      console.log(response)
+    })
+    .catch(error => {
+      console.log(error);
+    })
   }
 
   return (
