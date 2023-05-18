@@ -2,12 +2,25 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import Select from "./components/Select";
 import RenderDayData from "./components/RenderDayData";
+import './App.css'
 
 const App = () => {
   const [timeTableData, setTimeTableData] = useState();
   const [selectedGrade, setSelectedGrade] = useState('');
   const [selectedClass, setSelectedClass] = useState('');
   const [cancelToken, setCancelToken] = useState(null); // 요청 취소 토큰
+  const [scheduleData, setScheduleData] = useState();
+
+  // 시간표
+  useEffect(() => {
+    axios.get('http://localhost:8080/schedule')
+      .then(response => {
+        setScheduleData(response.data)
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }, [])
 
   // 수업시간정보
   useEffect(() => {
