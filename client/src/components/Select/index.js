@@ -1,9 +1,7 @@
 import React from 'react';
+import './style.css'
 
 const Select = ({setSelectedClass,setSelectedGrade,selectedClass,selectedGrade}) => {
-
-
-
 
   const handleSelectChange = (event) => {
     const selectedValue = event.target.value;
@@ -16,6 +14,11 @@ const Select = ({setSelectedClass,setSelectedGrade,selectedClass,selectedGrade})
 
   return (
     <>
+    <header>
+      <div>
+        
+      </div>
+    </header>
       <label htmlFor="mySelect">Select an option: </label>
       <select id="mySelect" onChange={handleSelectChange} value={selectedGrade + selectedClass}>
         <option value="11">1-1</option>

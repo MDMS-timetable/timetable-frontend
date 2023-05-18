@@ -21,21 +21,23 @@ const RenderDayData = ({timeTableData}) => {
   }
 
   return timeTableData.map((dayData, index) => (
-    <div key={index}>
-      <h2>요일: {dayData[0].weekdayString}</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>교시</th>
-            <th>과목</th>
-            <th>선생님</th>
-          </tr>
-        </thead>
-        <tbody>
-          {renderTableData(dayData)}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <div key={index}>
+        <h2>요일: {dayData[0].weekdayString}</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>교시</th>
+              <th>과목</th>
+              <th>선생님</th>
+            </tr>
+          </thead>
+          <tbody>
+            {renderTableData(dayData)}
+          </tbody>
+        </table>
+      </div>
+    </>
   ));
 };
 
