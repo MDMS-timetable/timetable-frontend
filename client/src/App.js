@@ -10,6 +10,7 @@ const App = () => {
   const [selectedClass, setSelectedClass] = useState('');
   const [cancelToken, setCancelToken] = useState(null); // 요청 취소 토큰
   const [scheduleData, setScheduleData] = useState();
+  const [currentDateTime, setCurrentDateTime] = useState('');
 
   // 시간표
   useEffect(() => {
@@ -82,6 +83,8 @@ const App = () => {
       selectedGrade = {selectedGrade}
       setSelectedClass = {setSelectedClass}
       setSelectedGrade = {setSelectedGrade}
+      currentDateTime = {currentDateTime}
+      setCurrentDateTime = {setCurrentDateTime}
       />
       <div>
         <RenderDayData 
