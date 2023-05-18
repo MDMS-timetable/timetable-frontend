@@ -48,7 +48,7 @@ timetable
 
     // 시간표
     Promise.all([timetable.getClassTime()]).then((result) => {
-      // console.log(result);
+      console.log(result); 
       app.get('/schedule', function(req, res) {
           res.json(result[0]); // 시간표 react로 보내기
       });
