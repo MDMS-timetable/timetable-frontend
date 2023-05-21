@@ -9,15 +9,13 @@ app.use(cors());
 const Timetable = require('comcigan-parser');
 const timetable = new Timetable();
 
-app.use(cors());
-app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 const schoolFinder = (schoolName, region) => (schoolList) => {
 const targetSchool = schoolList.find((school) => {
     return school.region === region && school.name.includes(schoolName);
 });
-return targetSchool;
+  return targetSchool;
 };
 
 timetable
@@ -28,7 +26,6 @@ timetable
 .then(() => {
     // 수업시간정보
     Promise.all([timetable.getTimetable()]).then((result) => {
-      // console.log(result);
 
       app.get('/timetable', function(req, res) {
           res.json(result[0]); // 수업시간정보 react로 보내기
@@ -53,11 +50,8 @@ timetable
           res.json(result[0]); // 시간표 react로 보내기
       });
     });
-
-
 });
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
 });
-
