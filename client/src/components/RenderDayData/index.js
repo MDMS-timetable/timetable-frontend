@@ -5,15 +5,7 @@ const RenderDayData = ({timeTableData}) => {
 
   // 데이터 요소를 HTML로 변환하여 반환하는 함수
   const renderTableData = (data) => {
-    return data.map((item, index) => (
-      item.subject && (
-        <tr key={index}>
-          <td>{item.classTime}</td>
-          <td>{item.subject}</td>
-          <td>{item.teacher}</td>
-        </tr>
-      )
-    ));
+    return 
   };
 
   if (!timeTableData || !Array.isArray(timeTableData)) {
@@ -33,7 +25,15 @@ const RenderDayData = ({timeTableData}) => {
             </tr>
           </thead>
           <tbody>
-            {renderTableData(dayData)}
+            {dayData.map((item, index) => (
+              item.subject && (
+                <tr key={index}>
+                  <td>{item.classTime}</td>
+                  <td>{item.subject}</td>
+                  <td>{item.teacher}</td>
+                </tr>
+              )
+            ))}
           </tbody>
         </table>
       </div>
