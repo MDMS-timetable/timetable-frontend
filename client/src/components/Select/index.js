@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
-import Date from '../Date'
+import Date from '../../utils/Date';
 
 const Select = ({ setSelectedClass, setSelectedGrade, selectedClass, selectedGrade, setCurrentDateTime,currentDateTime}) => {
 
