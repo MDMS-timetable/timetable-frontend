@@ -3,11 +3,6 @@ import React from 'react';
 // 요일 데이터를 HTML로 변환하여 반환하는 함수
 const RenderDayData = ({timeTableData}) => {
 
-  // 데이터 요소를 HTML로 변환하여 반환하는 함수
-  const renderTableData = (data) => {
-    return 
-  };
-
   if (!timeTableData || !Array.isArray(timeTableData)) {
     return null; // 데이터가 없거나 배열이 아닐 경우 null 반환
   }
