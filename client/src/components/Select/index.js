@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
-import Date from '../../utils/Date';
 
 const Select = ({ setSelectedClass, setSelectedGrade, selectedClass, selectedGrade, setCurrentDateTime,currentDateTime}) => {
-
-  <Date
-  setCurrentDateTime = {setCurrentDateTime}
-  currentDateTime = {currentDateTime}
-  />
 
   const handleSelectChange = (event) => {
     const selectedValue = event.target.value;
