@@ -29,8 +29,7 @@ const Select = ({ setTimeTableData,setSelectedClass, setSelectedGrade, selectedC
   
       // 선택 값이 존재할 경우에만 요청 보냄
       if (selectedGrade && selectedClass) {
-        axios
-          .post('http://localhost:8080/viewtimetable', { grade: selectedGrade, class: selectedClass }, { cancelToken: source.token })
+        axios.post('http://localhost:8080/viewtimetable', { grade: selectedGrade, class: selectedClass }, { cancelToken: source.token })
           .then(response => {
             setTimeTableData(response.data);
           })

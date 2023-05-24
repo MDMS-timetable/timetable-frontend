@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css'
 
 // 요일 데이터를 HTML로 변환하여 반환하는 함수
 const RenderDayData = ({timeTableData}) => {
@@ -10,7 +11,7 @@ const RenderDayData = ({timeTableData}) => {
   return timeTableData.map((dayData, index) => (
     <>
       <div key={index}>
-        <h2>요일: {dayData[0].weekdayString}</h2>
+        <h1 className='day'>요일: {dayData[0].weekdayString}</h1>
         <table>
           <thead>
             <tr>
