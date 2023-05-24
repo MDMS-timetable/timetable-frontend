@@ -32,15 +32,17 @@ timetable
       });
       
       // grade, class post로 받아옴
-      app.post('/viewtimetable', function(req, res) {
+      app.post('/viewtimetable/:week', function(req, res) {
         const r_grade = req.body.grade;
         const r_class = req.body.class;
+        const week = req.params.week;
         console.log("grade : " + r_grade); // react에서 받은 grade출력
         console.log("class : " + r_class); // react에서 받은 class출력
+        console.log("week : " + week); // react에서 받은 week출력
         console.log("----------");
-        res.json(result[0][r_grade][r_class]);
+        res.json(result[0][r_grade][r_class][week]);
       })
-
+      
     });
 
     // 시간표
