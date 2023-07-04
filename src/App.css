@@ -1,0 +1,121 @@
+* {
+  background-color: #f2ecdb;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px #ccc;
+  border-style: hidden;
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: 10px;
+  border: 1px solid #c0bebe;
+}
+
+.schedule-item {
+  margin-bottom: 5px;
+}
+
+.schedule-item div {
+  font-size: 14px;
+}
+
+.schedule-item div:first-child {
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.dropdown-header {
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  width: fit-content; /* fit-content로 변경 */
+  min-width: 100%; /* 최소 너비를 100%로 설정 */
+  box-sizing: border-box;
+  border-radius: 4px;
+  overflow: auto;
+  max-height: 200px;
+}
+
+.dropdown-item {
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 0px;
+  margin: 0;
+}
+
+.dropdown-item:hover {
+  background-color: lightgray;
+}
+
+.dropdown-item:first-child {
+  border-top: none;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-size {
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+@media screen and (max-width: 767px) {
+  .dropdown-header {
+    width: 50px;
+    padding: 10px 5px;
+  }
+
+  .schedule-table td {
+    padding: 2px;
+  }
+
+  .title-size {
+    font-size: x-large;
+  }
+
+  .schedule-item div {
+    font-size: 10px;
+  }
+}
