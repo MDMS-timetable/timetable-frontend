@@ -1,12 +1,15 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import "./App.css";
+import expend from './img/expend.svg';
 
 const App = () => {
   const [timeTableData, setTimeTableData] = useState([]);
   const [selectedGrade, setSelectedGrade] = useState("");
   const [selectedClass, setSelectedClass] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
   const cancelToken = useRef(null);
+  const dropdownRef = useRef(null);
 
   const handleSelectChange = (event) => {
     const selectedGrade = event.slice(0, 1);
@@ -14,6 +17,7 @@ const App = () => {
 
     setSelectedGrade(selectedGrade);
     setSelectedClass(selectedClass);
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -64,7 +68,12 @@ const App = () => {
     return (
       <div className="dropdown-menu" ref={dropdownRef}>
         <div className="dropdown-header" onClick={handleHeaderClick}>
-          {selectedGrade && selectedClass ? `${selectedGrade}-${selectedClass}` : '선택'}
+          <div className="dropdown-text">
+            <div>
+              {selectedGrade && selectedClass ? `${selectedGrade}-${selectedClass}` : '선택'}
+            </div>
+            <img className="expend" src={expend} alt=""/>
+            </div>
         </div>
         {isOpen && (
           <ul className="dropdown-list">
@@ -222,9 +231,6 @@ const App = () => {
     );
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef(null);
-
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsOpen(false);
@@ -246,7 +252,7 @@ const App = () => {
     <div>
       <div className="title">
         <div className="title-size">
-          MDMS {selectedGrade}-{selectedClass} Timetable
+          MDMS {selectedGrade}-{selectedClass} 시간표
         </div>
         <div className="class">
           <span id="class-text">학급 : </span>
