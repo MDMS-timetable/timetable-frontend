@@ -12,6 +12,7 @@
   border-radius: 10px;
   box-shadow: 0 0 0 1px #ccc;
   border-style: hidden;
+  margin-bottom: 50px;
 }
 
 .schedule-table th,
@@ -26,7 +27,11 @@
 }
 
 .schedule-item div {
-  font-size: 14px;
+  font-size: 16px;
+}
+
+.period {
+  font-size: 20px;
 }
 
 .schedule-item div:first-child {
@@ -43,7 +48,7 @@
   cursor: pointer;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 150px;
+  width: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -135,10 +140,46 @@
   height: 30px;
 }
 
+.info {
+  margin-top: 25px;
+  font-size: 25px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.info > div {
+  width: 120px;
+  text-align: center;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+}
+
+.line {
+  border: 1px solid black;
+}
+
+.link img {
+  width: 40px;
+}
+
+.last-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.anys {
+  width: 70px;
+}
+
 @media screen and (max-width: 767px) {
   .dropdown-header {
     width: 50px;
-    padding: 7px 5px;
+    padding: 3px 6px;
     font-size: 17px;
   }
 
@@ -147,7 +188,7 @@
   }
 
   #class-text {
-    font-size:medium;
+    font-size: medium;
   }
 
   .schedule-table td {
@@ -159,6 +200,10 @@
   }
 
   .schedule-item div {
+    font-size: 8px;
+  }
+
+  .period {
     font-size: 10px;
   }
 
@@ -166,12 +211,38 @@
     margin: 10px 0px;
   }
 
-  .dropdown-text > img{
+  .dropdown-text > img {
     width: 20px;
   }
 
   .dropdown-text {
     font-size: 15px;
     height: 15px;
+  }
+
+  .info {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+
+  .link img {
+    width: 25px;
+    display: flex;
+  }
+
+  .line {
+    border: .7px solid black;
+  }
+
+  .last-text {
+    font-size: 13px;
+  }
+
+  .anys {
+    width: 60px;
+  }
+
+  .info > div {
+    width: 90px;
   }
 }
