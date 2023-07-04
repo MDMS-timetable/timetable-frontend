@@ -183,12 +183,6 @@ const App = () => {
 
     return (
       <div>
-        <div className="title">
-          <div className="title-size">
-            MDMS {selectedGrade}-{selectedClass} 시간표
-          </div>
-          <div>{selectMenuClass()}</div>
-        </div>
         <table className="schedule-table">
           <thead>
             <tr>
@@ -250,10 +244,15 @@ const App = () => {
 
   return (
     <div>
+      <div className="title">
+        <div className="title-size">
+          MDMS {selectedGrade}-{selectedClass} 시간표
+        </div>
+        <div>{selectMenuClass()}</div>
+      </div>
       <div>{renderDayData()}</div>
     </div>
   );
 };
 
 export default App;
-
