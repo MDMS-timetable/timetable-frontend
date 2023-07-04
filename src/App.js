@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import "./App.css";
-import expend from './img/expend.svg';
+import expend from "./img/expend.svg";
 
 const App = () => {
   const [timeTableData, setTimeTableData] = useState([]);
@@ -43,7 +43,7 @@ const App = () => {
     if (selectedGrade && selectedClass) {
       axios
         .post(
-          "https://mdms-server.loca.lt/viewtimetable",
+          "https://mdms-backend.bssm.kro.kr/viewtimetable",
           { grade: selectedGrade, class: selectedClass },
           { cancelToken: cancelToken.current.token }
         )
@@ -70,10 +70,12 @@ const App = () => {
         <div className="dropdown-header" onClick={handleHeaderClick}>
           <div className="dropdown-text">
             <div>
-              {selectedGrade && selectedClass ? `${selectedGrade}-${selectedClass}` : '선택'}
+              {selectedGrade && selectedClass
+                ? `${selectedGrade}-${selectedClass}`
+                : "선택"}
             </div>
-            <img className="expend" src={expend} alt=""/>
-            </div>
+            <img className="expend" src={expend} alt="" />
+          </div>
         </div>
         {isOpen && (
           <ul className="dropdown-list">
