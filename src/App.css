@@ -12,6 +12,7 @@
   border-radius: 10px;
   box-shadow: 0 0 0 1px #ccc;
   border-style: hidden;
+  margin: auto;
   margin-bottom: 50px;
 }
 
@@ -19,7 +20,11 @@
 .schedule-table td {
   padding: 10px;
   border: 1px solid #c0bebe;
-  width: 16.666%;
+  width: 14%;
+}
+
+#th-period {
+  width: 8%;
 }
 
 .schedule-item {
@@ -27,11 +32,16 @@
 }
 
 .schedule-item div {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .period {
   font-size: 20px;
+}
+
+#teacher {
+  font-size: 18px;
+  color: rgb(97, 97, 97);
 }
 
 .schedule-item div:first-child {
@@ -142,7 +152,7 @@
 
 .info {
   margin-top: 25px;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
   display: flex;
   justify-content: space-evenly;
@@ -163,7 +173,7 @@
 }
 
 .link img {
-  width: 40px;
+  width: 30px;
 }
 
 .last-text {
@@ -187,6 +197,10 @@
     font-size: 17px;
   }
 
+  #teacher {
+    font-size: 11px;
+  }
+
   #class-text {
     font-size: medium;
   }
@@ -195,16 +209,27 @@
     padding: 2px;
   }
 
+  #th-period {
+  }
+
+  .schedule-table {
+    margin-bottom: 30px;
+  }
+
   .title-size {
     font-size: large;
   }
 
+  .schedule-item {
+    margin: 0 auto;
+  }
+
   .schedule-item div {
-    font-size: 8px;
+    font-size: 13px;
   }
 
   .period {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .title {
@@ -222,7 +247,7 @@
 
   .info {
     margin-top: 15px;
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .link img {
@@ -231,7 +256,7 @@
   }
 
   .line {
-    border: .7px solid black;
+    border: 0.7px solid black;
   }
 
   .last-text {

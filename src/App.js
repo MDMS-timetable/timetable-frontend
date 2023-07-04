@@ -200,7 +200,7 @@ const App = () => {
         <table className="schedule-table">
           <thead>
             <tr className="th-color">
-              <th>교시</th>
+              <th id="th-period">교시</th>
               <th>월</th>
               <th>화</th>
               <th>수</th>
@@ -219,7 +219,7 @@ const App = () => {
                         return (
                           <div key={index} className="schedule-item">
                             <div>{schedule.subject}</div>
-                            <div>{schedule.teacher}</div>
+                            <div id="teacher">{schedule.teacher}</div>
                           </div>
                         );
                       } else {
@@ -289,7 +289,6 @@ const App = () => {
 
           <div className="last-text">
             <div>@2023 MDMS-TimeTalbe from</div>
-            <div className="line"></div>
             <div className="anys">
               <img src={anys} alt=""></img>
             </div>
