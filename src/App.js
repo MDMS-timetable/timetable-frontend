@@ -39,7 +39,7 @@ const App = () => {
     if (selectedGrade && selectedClass) {
       axios
         .post(
-          "http://localhost:8080/viewtimetable",
+          "https://mdms-server.loca.lt/viewtimetable",
           { grade: selectedGrade, class: selectedClass },
           { cancelToken: cancelToken.current.token }
         )
