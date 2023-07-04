@@ -64,7 +64,7 @@ const App = () => {
     return (
       <div className="dropdown-menu" ref={dropdownRef}>
         <div className="dropdown-header" onClick={handleHeaderClick}>
-          {selectedGrade + "-" + selectedClass}
+          {selectedGrade && selectedClass ? `${selectedGrade}-${selectedClass}` : '선택'}
         </div>
         {isOpen && (
           <ul className="dropdown-list">
@@ -185,7 +185,7 @@ const App = () => {
       <div>
         <table className="schedule-table">
           <thead>
-            <tr>
+            <tr className="th-color">
               <th>교시</th>
               <th>월</th>
               <th>화</th>
@@ -246,9 +246,12 @@ const App = () => {
     <div>
       <div className="title">
         <div className="title-size">
-          MDMS {selectedGrade}-{selectedClass} 시간표
+          MDMS {selectedGrade}-{selectedClass} Timetable
         </div>
-        <div>{selectMenuClass()}</div>
+        <div className="class">
+          <span id="class-text">학급 : </span>
+          {selectMenuClass()}
+        </div>
       </div>
       <div>{renderDayData()}</div>
     </div>
