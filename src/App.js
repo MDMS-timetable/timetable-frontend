@@ -209,7 +209,7 @@ const App = () => {
             </tr>
           </thead>
           <tbody>
-            {[0, 1, 2, 3, 4, 5, 6, 7].map((classTime, index) => (
+            {[0, 1, 2, 3, 4, 5, 6].map((classTime, index) => (
               <tr key={index}>
                 <td className="period">{classTime + 1}</td>
                 {[0, 1, 2, 3, 4].map((weekday, index) => (

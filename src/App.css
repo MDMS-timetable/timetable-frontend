@@ -9,7 +9,7 @@
   table-layout: fixed;
   border-collapse: collapse;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0 0 0 1px #ccc;
   border-style: hidden;
   margin: auto;
@@ -89,8 +89,8 @@
   list-style: none;
   background-color: #fff;
   border: 1px solid #ccc;
-  width: fit-content; /* fit-content로 변경 */
-  min-width: 100%; /* 최소 너비를 100%로 설정 */
+  width: fit-content;
+  min-width: 100%;
   box-sizing: border-box;
   border-radius: 4px;
   overflow: auto;
@@ -130,7 +130,7 @@
 
 .title-size {
   font-weight: bold;
-  font-size: xx-large;
+  font-size: 38px;
 }
 
 .class {
