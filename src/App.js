@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Helmet } from "react-helmet";
 import axios from "axios";
 import "./App.css";
 import expend from "./img/expend.svg";
@@ -255,6 +256,37 @@ const App = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charset="utf-8" />
+        <link rel="icon" href="/mdms_logo.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta
+          name="description"
+          content="만덕중학교 시간표를 확인할 수 있습니다."
+        />
+        <meta
+          name="keywords"
+          content="시간표, 만덕중학교, 만덕중학교 시간표, 만중 시간표, 만덕중 시간표, 만덕중"
+        />
+        <meta name="author" content="An Ye Seong" />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Subject" content="시간표" />
+        <meta http-equiv="Generator" content="Visual Studio Code" />
+        <meta http-equiv="Reply-To" content="anyeseong34@gmail.com" />
+        <meta http-equiv="Email" content="anyeseong34@gmail.com" />
+        <meta
+          name="google-site-verification"
+          content="9uyD9o32V55EODSQUiQcY-pi4YOjA7VG6M6sPg-lsp8"
+        />
+        <meta name="og:site_name" content="만덕중 시간표" />
+        <meta name="og:title" content="만덕중학교 시간표" />
+        <meta name="og:description" content="만덕중학교 시간표입니다." />
+        <meta name="og:type" content="website" />
+        <meta name="og:url" content="https://mdms.bssm.kro.kr" />
+        <meta name="og:image" />
+      </Helmet>
+
       <div className="title">
         <div className="title-size">
           MDMS {selectedGrade}-{selectedClass} 시간표
@@ -278,11 +310,19 @@ const App = () => {
           </div>
 
           <div className="link">
-            <a href="https://www.instagram.com/an.ys_34/" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.instagram.com/an.ys_34/"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img className="insta" src={instagram} alt=""></img>
             </a>
             <div className="line"></div>
-            <a href="https://github.com/anys34" target="_blank" rel="noreferrer">
+            <a
+              href="https://github.com/anys34"
+              target="_blank"
+              rel="noreferrer"
+            >
               <img className="github" src={github} alt=""></img>
             </a>
           </div>
