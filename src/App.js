@@ -270,6 +270,7 @@ const App = () => {
           content="시간표, 만덕중학교, 만덕중학교 시간표, 만중 시간표, 만덕중 시간표, 만덕중"
         />
         <meta name="author" content="An Ye Seong" />
+        <meta name="naver-site-verification" content="2e101387f0b84083998fc732518bcff395bbf211" />
         <meta name="robots" content="index, follow" />
         <meta http-equiv="Subject" content="시간표" />
         <meta http-equiv="Generator" content="Visual Studio Code" />
