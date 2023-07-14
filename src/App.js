@@ -276,6 +276,10 @@ const App = () => {
         <meta http-equiv="Reply-To" content="anyeseong34@gmail.com" />
         <meta http-equiv="Email" content="anyeseong34@gmail.com" />
         <meta
+          name="naver-site-verification"
+          content="2e101387f0b84083998fc732518bcff395bbf211"
+        />
+        <meta
           name="google-site-verification"
           content="9uyD9o32V55EODSQUiQcY-pi4YOjA7VG6M6sPg-lsp8"
         />
