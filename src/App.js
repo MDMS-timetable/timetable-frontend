@@ -273,16 +273,15 @@ const App = () => {
         <meta http-equiv="Reply-To" content="anyeseong34@gmail.com" />
         <meta http-equiv="Email" content="anyeseong34@gmail.com" />
         <meta
-          name="naver-site-verification"
-          content="2e101387f0b84083998fc732518bcff395bbf211"
-        />
-        <meta
           name="google-site-verification"
           content="9uyD9o32V55EODSQUiQcY-pi4YOjA7VG6M6sPg-lsp8"
         />
         <meta name="og:site_name" content="만덕중 시간표" />
-        <meta name="og:title" content="만덕중학교 시간표" />
-        <meta name="og:description" content="만덕중학교 시간표입니다." />
+        <meta name="og:title" content="만덕중 시간표" />
+        <meta
+          name="og:description"
+          content="만덕중학교 시간표를 확인할 수 있습니다."
+        />
         <meta name="og:type" content="website" />
         <meta name="og:url" content="https://mdms.bssm.kro.kr" />
         <meta name="og:image" content="client/src/img/mdms_logo.svg" />
