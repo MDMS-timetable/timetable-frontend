@@ -6,6 +6,7 @@ import expend from "./img/expend.svg";
 import github from "./img/github-mark.svg";
 import instagram from "./img/Instagram_logo.svg";
 import anys from "./img/anys_logo.svg";
+import mdms from "./img/mdms_logo.svg";
 
 const App = () => {
   const [timeTableData, setTimeTableData] = useState([]);
@@ -257,34 +258,22 @@ const App = () => {
   return (
     <div>
       <Helmet>
-        <link rel="icon" href="client/src/img/mdms_logo.svg" />
-        <meta
-          name="description"
-          content="만덕중학교 시간표를 확인할 수 있습니다."
-        />
-        <meta
-          name="keywords"
-          content="시간표, 만덕중학교, 만덕중학교 시간표, 만중 시간표, 만덕중 시간표, 만덕중"
-        />
+        <link rel="icon" href={ mdms } />
+        <meta name="description" content="만덕중학교 시간표를 확인할 수 있습니다." />
+        <meta name="keywords" content="시간표, 만덕중학교, 만덕중학교 시간표, 만중 시간표, 만덕중 시간표, 만덕중" />
         <meta name="author" content="An Ye Seong" />
         <meta name="robots" content="index, follow" />
         <meta http-equiv="Subject" content="시간표" />
         <meta http-equiv="Generator" content="Visual Studio Code" />
         <meta http-equiv="Reply-To" content="anyeseong34@gmail.com" />
         <meta http-equiv="Email" content="anyeseong34@gmail.com" />
-        <meta
-          name="google-site-verification"
-          content="9uyD9o32V55EODSQUiQcY-pi4YOjA7VG6M6sPg-lsp8"
-        />
+        <meta name="google-site-verification" content="9uyD9o32V55EODSQUiQcY-pi4YOjA7VG6M6sPg-lsp8" />
         <meta name="og:site_name" content="만덕중 시간표" />
         <meta name="og:title" content="만덕중 시간표" />
-        <meta
-          name="og:description"
-          content="만덕중학교 시간표를 확인할 수 있습니다."
-        />
+        <meta name="og:description" content="만덕중학교 시간표를 확인할 수 있습니다." />
         <meta name="og:type" content="website" />
         <meta name="og:url" content="https://mdms.bssm.kro.kr" />
-        <meta name="og:image" content="client/src/img/mdms_logo.svg" />
+        <meta name="og:image" content={ mdms } />
       </Helmet>
 
       <div className="title">
