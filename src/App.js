@@ -257,10 +257,7 @@ const App = () => {
   return (
     <div>
       <Helmet>
-        <meta charset="utf-8" />
-        <link rel="icon" href="/mdms_logo.svg" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
+        <link rel="icon" href="client/src/img/mdms_logo.svg" />
         <meta
           name="description"
           content="만덕중학교 시간표를 확인할 수 있습니다."
@@ -288,12 +285,12 @@ const App = () => {
         <meta name="og:description" content="만덕중학교 시간표입니다." />
         <meta name="og:type" content="website" />
         <meta name="og:url" content="https://mdms.bssm.kro.kr" />
-        <meta name="og:image" />
+        <meta name="og:image" content="client/src/img/mdms_logo.svg" />
       </Helmet>
 
       <div className="title">
         <div className="title-size">
-          MDMS {selectedGrade}-{selectedClass} 시간표
+          만덕중 {selectedGrade}-{selectedClass} 시간표
         </div>
 
         <div className="class">
