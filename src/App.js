@@ -48,7 +48,7 @@ const App = () => {
     if (selectedGrade && selectedClass) {
       axios
         .post(
-          "https://mdms-backend.bssm.kro.kr/viewtimetable",
+          "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/viewtimetable",
           { grade: selectedGrade, class: selectedClass },
           { cancelToken: cancelToken.current.token }
         )
