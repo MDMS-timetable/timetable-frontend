@@ -5,6 +5,7 @@ import axios from "axios";
 //Components
 import expend from "../img/expend.svg";
 import mdms from "../img/mdms_logo.svg";
+import Footer from "../Components/Footer";
 
 const TimeTable = () => {
     const [timeTableData, setTimeTableData] = useState([]);
@@ -246,6 +247,7 @@ const TimeTable = () => {
 
             <div>{renderDayData()}</div>
 
+            <Footer />
         </div>
     );
 };
