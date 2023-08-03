@@ -1,0 +1,280 @@
+* {
+  background-color: #f8f3e7;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.schedule-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 0 1px #ccc;
+  border-style: hidden;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+.schedule-table th,
+.schedule-table td {
+  padding: 10px;
+  border: 1px solid #c0bebe;
+  width: 14%;
+}
+
+#th-period {
+  width: 8%;
+}
+
+.schedule-item {
+  margin-bottom: 5px;
+}
+
+.schedule-item div {
+  font-size: 20px;
+}
+
+.period {
+  font-size: 20px;
+}
+
+#teacher {
+  font-size: 18px;
+  color: rgb(97, 97, 97);
+}
+
+.schedule-item div:first-child {
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.dropdown-header {
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0 auto;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.dropdown-text {
+  display: flex;
+  float: left;
+  text-align: center;
+  align-items: center;
+}
+
+.dropdown-text > div {
+  width: 30px;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  width: fit-content;
+  min-width: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  overflow: auto;
+  max-height: 200px;
+}
+
+.dropdown-item {
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 0px;
+  margin: 0;
+  font-size: 20px;
+}
+
+.dropdown-item:hover {
+  background-color: lightgray;
+}
+
+.dropdown-item:first-child {
+  border-top: none;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+}
+
+.title {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 30px 0px;
+}
+
+.title-size {
+  font-weight: bold;
+  font-size: 38px;
+}
+
+.class {
+  display: flex;
+  align-items: center;
+}
+
+#class-text {
+  font-size: x-large;
+}
+
+.th-color {
+  color: rgb(106, 106, 106);
+}
+
+.expend {
+  height: 30px;
+}
+
+.info {
+  margin-top: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.info > div {
+  width: 120px;
+  text-align: center;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+}
+
+.line {
+  border: 1px solid black;
+}
+
+.link img {
+  width: 30px;
+}
+
+.last-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.anys {
+  width: 70px;
+}
+
+@media screen and (max-width: 767px) {
+  body {
+    margin: 0;
+  }
+  #root {
+    margin: -10px;
+  }
+  .dropdown-header {
+    width: 50px;
+    padding: 3px 6px;
+    font-size: 17px;
+  }
+
+  .dropdown-item {
+    font-size: 17px;
+  }
+
+  #teacher {
+    font-size: 11px;
+  }
+
+  #class-text {
+    font-size: medium;
+  }
+
+  .schedule-table td {
+    padding: 2px;
+  }
+
+  .schedule-table {
+    margin-bottom: 15%;
+  }
+
+  .title-size {
+    font-size: large;
+  }
+
+  .schedule-item {
+    margin: 0 auto;
+  }
+
+  .schedule-item div {
+    font-size: 13px;
+  }
+
+  .period {
+    font-size: 12px;
+    .period-last-child {
+      margin-left: 5px;
+      font-size: 10px;
+    }
+  }
+
+  .title {
+    margin: 10px 0px;
+  }
+
+  .dropdown-text > img {
+    width: 20px;
+  }
+
+  .dropdown-text {
+    font-size: 15px;
+    height: 15px;
+  }
+
+  .info {
+    margin-top: 15px;
+    font-size: 12px;
+  }
+
+  .link img {
+    width: 25px;
+    display: flex;
+  }
+
+  .line {
+    border: 0.7px solid black;
+  }
+
+  .last-text {
+    font-size: 13px;
+  }
+
+  .anys {
+    width: 60px;
+  }
+
+  .info > div {
+    width: 90px;
+  }
+}

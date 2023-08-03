@@ -62,7 +62,8 @@ const TimeTable = () => {
         axios
             .get('https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/schedule')
             .then((response) => {
-                setScheduleData(response.data);
+                let newData = response.data.map((item => item.split('(')))
+                setScheduleData(newData);
             })
             .catch((error) => {
                 if (axios.isCancel(error)) {
@@ -166,7 +167,10 @@ const TimeTable = () => {
                     <tbody>
                         {[0, 1, 2, 3, 4, 5, 6].map((classTime, index) => (
                             <tr key={index}>
-                                <td className='period'>{scheduleData[classTime]}</td>
+                                <td className='period'>
+                                    <p>{scheduleData[classTime][0]}</p>
+                                    <p className="period-last-child">{'(' + scheduleData[classTime][1]}</p>
+                                </td>
                                 {[0, 1, 2, 3, 4].map((weekday, index) => (
                                     <td key={index}>
                                         {timeTableData[weekday].map((schedule, index) => {
