@@ -1,6 +1,6 @@
-import { useState } from "react";
-import React, { useEffect } from "react";
-import axios from "axios";
+import { useState } from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
 
 const Lunch = () => {
   const [lunchData, setLunchData] = useState();
