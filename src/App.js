@@ -7,7 +7,7 @@ import TimeTable from "./Pages/TimeTable";
 
 const App = () => {
   return (
-    <div>
+    <div> 
       <TimeTable/>
       <Footer/>
     </div>
