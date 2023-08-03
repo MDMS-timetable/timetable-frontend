@@ -3,12 +3,12 @@ import React, { useEffect } from "react";
 import axios from "axios";
 
 const Lunch = () => {
-  const [lunchData, setLunchData] = useState([]);
+  const [lunchData, setLunchData] = useState();
   useEffect(() => {
     axios
       .post(
-        "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/viewtimetable",
-        { date: 20230511 },
+        "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/lunch/mealinfo",
+        { month: 202305 },
       )
       .then((response) => {
         setLunchData(response.data);
@@ -22,11 +22,17 @@ const Lunch = () => {
       });
   }, []);
   return (
-    <div>
-      <div>하이</div>
-        <div>{lunchData.row.ORPLC_INFO}</div>
-        <div>{lunchData.row.CAL_INFO}</div>
-    </div>
+    <>
+      {lunchData &&
+        lunchData.map((item, index) => (
+          <div key={index}>
+            <div>{item.date}</div>
+            <div>{item.lunch}</div>
+            <div>{item.calorie}</div>
+            <br></br>
+          </div>
+        ))}
+    </>
   );
 };
 
