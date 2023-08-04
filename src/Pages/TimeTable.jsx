@@ -247,7 +247,6 @@ const TimeTable = () => {
 
             <div>{renderDayData()}</div>
 
-            <Footer />
         </div>
     );
 };
