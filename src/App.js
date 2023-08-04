@@ -5,15 +5,14 @@ import './Style.scss';
 //Components
 import TimeTable from './Pages/TimeTable';
 import Lunch from './Pages/Lunch';
-import Info from './Pages/Info';
 import Footer from './Components/Footer';
 
 const App = () => {
     return (
         <Routes>
-            <Route path='/' Component={Footer} />
+            <Route path='/' Component={TimeTable} />
             <Route path='/lunch' Component={Lunch} />
-            <Route path='/info' Component={Info} />
+            <Route path='/info' Component={Footer} />
         </Routes>
     );
 };

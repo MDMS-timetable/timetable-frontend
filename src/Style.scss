@@ -19,6 +19,40 @@ html {
         padding: 0;
     }
 
+    //TimeTable
+    .Main_Header {
+        cursor: default;
+        -ms-user-select: none;
+        -moz-user-select: -moz-none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+
+        #Header_School {
+            font-size: 80px;
+        }
+
+        #DropMenu {
+            .Dropdown_Menu {
+                .Dropdown_header {
+                    .Dropdown_text {
+                        div {
+                            font-size: 50px;
+                            background-color: $Green;
+                            svg {
+                                margin-left: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        div {
+            display: inline;
+        }
+    }
+
     //Footer
     .Footer_Container {
         display: flex;

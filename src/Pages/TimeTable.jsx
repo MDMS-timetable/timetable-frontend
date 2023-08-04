@@ -1,17 +1,18 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Helmet } from "react-helmet";
-import axios from "axios";
+import React, { useEffect, useState, useRef } from 'react';
+import { Helmet } from 'react-helmet';
+import axios from 'axios';
 
 //Components
-import expend from "../img/expend.svg";
-import mdms from "../img/mdms_logo.svg";
-import Footer from "../Components/Footer";
+import expend from '../img/expend.svg';
+import mdms from '../img/mdms_logo.svg';
+import Footer from '../Components/Footer';
 
 const TimeTable = () => {
     const [timeTableData, setTimeTableData] = useState([]);
     const [scheduleData, setScheduleData] = useState([]);
     const [selectedGrade, setSelectedGrade] = useState('');
     const [selectedClass, setSelectedClass] = useState('');
+    const [timer, setTimer] = useState('00:00:00');
     const [isOpen, setIsOpen] = useState(false);
     const cancelToken = useRef(null);
     const dropdownRef = useRef(null);
@@ -63,7 +64,7 @@ const TimeTable = () => {
         axios
             .get('https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/schedule')
             .then((response) => {
-                let newData = response.data.map((item => item.split('(')))
+                let newData = response.data.map((item) => item.split('('));
                 setScheduleData(newData);
             })
             .catch((error) => {
@@ -79,67 +80,90 @@ const TimeTable = () => {
         };
     }, [selectedGrade, selectedClass]);
 
+    const currentTimer = () => {
+        const date = new Date();
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+        const todayMonth = String(date.getMonth() + 1);
+        const todayDate = String(date.getDate());
+        setTimer(`${todayMonth}월${todayDate}일   ${hours}:${minutes}:${seconds}`);
+    };
+
+    const startTimer = () => {
+        setInterval(currentTimer, 1000);
+    };
+
+    startTimer();
+
     const selectMenuClass = () => {
         return (
-            <div className='dropdown-menu' ref={dropdownRef}>
-                <div className='dropdown-header' onClick={handleHeaderClick}>
-                    <div className='dropdown-text'>
-                        <div>{selectedGrade && selectedClass ? `${selectedGrade}-${selectedClass}` : '선택'}</div>
-                        <img className='expend' src={expend} alt='' />
+            <div className='Dropdown_Menu' ref={dropdownRef}>
+                <div className='Dropdown_header' onClick={handleHeaderClick}>
+                    <div className='Dropdown_text'>
+                        <div>
+                            {selectedGrade && selectedClass ? `${selectedGrade} - ${selectedClass}` : '선택'}
+                            <svg xmlns='http://www.w3.org/2000/svg' width='25' height='25' viewBox='0 0 35 28' fill='none'>
+                                <path
+                                    d='M0.971201 1.53474C0.549854 0.868905 1.02827 0 1.81622 0H33.2077C33.9906 0 34.4698 0.858978 34.0587 1.52521L18.5591 26.6384C18.171 27.2673 17.2583 27.2724 16.8631 26.6479L0.971201 1.53474Z'
+                                    fill='black'
+                                />
+                            </svg>
+                        </div>
                     </div>
                 </div>
                 {isOpen && (
-                    <ul className='dropdown-list'>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('11')}>
-                            1-1
+                    <ul className='Dropdown_list'>
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('11')}>
+                            1 - 1
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('12')}>
-                            1-2
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('12')}>
+                            1 - 2
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('13')}>
-                            1-3
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('13')}>
+                            1 - 3
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('14')}>
-                            1-4
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('14')}>
+                            1 - 4
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('14')}>
-                            1-5
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('14')}>
+                            1 - 5
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('27')}>
-                            2-1
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('27')}>
+                            2 - 1
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('27')}>
-                            2-2
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('27')}>
+                            2 - 2
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('27')}>
-                            2-3
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('27')}>
+                            2 - 3
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('27')}>
-                            2-4
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('27')}>
+                            2 - 4
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('27')}>
-                            2-5
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('27')}>
+                            2 - 5
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('27')}>
-                            2-6
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('27')}>
+                            2 - 6
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('27')}>
-                            2-7
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('27')}>
+                            2 - 7
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('31')}>
-                            3-1
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('31')}>
+                            3 - 1
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('32')}>
-                            3-2
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('32')}>
+                            3 - 2
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('33')}>
-                            3-3
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('33')}>
+                            3 - 3
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('34')}>
-                            3-4
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('34')}>
+                            3 - 4
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('35')}>
-                            3-5
+                        <li className='Dropdown_item' onClick={() => handleSelectChange('35')}>
+                            3 - 5
                         </li>
                     </ul>
                 )}
@@ -170,7 +194,7 @@ const TimeTable = () => {
                             <tr key={index}>
                                 <td className='period'>
                                     <p>{scheduleData[classTime][0]}</p>
-                                    <p className="period-last-child">{'(' + scheduleData[classTime][1]}</p>
+                                    <p className='period-last-child'>{'(' + scheduleData[classTime][1]}</p>
                                 </td>
                                 {[0, 1, 2, 3, 4].map((weekday, index) => (
                                     <td key={index}>
@@ -214,7 +238,7 @@ const TimeTable = () => {
     };
 
     return (
-        <div>
+        <div className='TimeTable_Container'>
             <Helmet>
                 <link rel='icon' href={mdms} />
                 <meta name='description' content='만덕중학교 시간표를 확인할 수 있습니다.' />
@@ -234,19 +258,13 @@ const TimeTable = () => {
                 <meta name='og:image' content={mdms} />
             </Helmet>
 
-            <div className='title'>
-                <div className='title-size'>
-                    만덕중 {selectedGrade}-{selectedClass} 시간표
-                </div>
-
-                <div className='class'>
-                    <span id='class-text'>학급 : </span>
-                    {selectMenuClass()}
-                </div>
+            <div className='Main_Header'>
+                <span id='Header_School'>만덕중</span>
+                <div id='DropMenu'>{selectMenuClass()}</div>
+                {/*<span>{timer}</span>*/}
             </div>
 
             <div>{renderDayData()}</div>
-
         </div>
     );
 };
