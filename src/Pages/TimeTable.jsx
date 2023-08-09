@@ -105,22 +105,22 @@ const TimeTable = () => {
                         <li className='dropdown-item' onClick={() => handleSelectChange('14')}>
                             1-5
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('27')}>
+                        <li className='dropdown-item' onClick={() => handleSelectChange('21')}>
                             2-1
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('27')}>
+                        <li className='dropdown-item' onClick={() => handleSelectChange('22')}>
                             2-2
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('27')}>
+                        <li className='dropdown-item' onClick={() => handleSelectChange('23')}>
                             2-3
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('27')}>
+                        <li className='dropdown-item' onClick={() => handleSelectChange('24')}>
                             2-4
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('27')}>
+                        <li className='dropdown-item' onClick={() => handleSelectChange('25')}>
                             2-5
                         </li>
-                        <li className='dropdown-item' onClick={() => handleSelectChange('27')}>
+                        <li className='dropdown-item' onClick={() => handleSelectChange('26')}>
                             2-6
                         </li>
                         <li className='dropdown-item' onClick={() => handleSelectChange('27')}>
