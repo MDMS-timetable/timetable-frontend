@@ -1,4 +1,9 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+
+
 * {
+  font-family: 'Noto Sans KR', sans-serif;
   background-color: #f8f3e7;
   border-radius: 10px;
   margin: 5px;
@@ -276,5 +281,87 @@
 
   .info > div {
     width: 90px;
+  }
+}
+
+.lunchBox {
+  width:22rem;
+  margin: 27px;
+  background-color:white;;
+  border-radius: 30px;
+  box-shadow:0px 0px 17px rgba(0, 0, 0, 0.1);
+  transition: .3s;
+  *{
+    
+    border-radius: 0;
+    text-align: center;
+  }
+  .dayandKcal{
+    border-radius: 22px 22px 0px 0px;
+    margin: 0;
+    padding: 10px;
+    font-size: 17px;
+    
+  }
+  .menu_container{
+    margin: 0;
+    background-color:white;
+    border-radius: 30px;
+    height: 17rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+  .menu{
+    margin: 0;
+    border-radius: 30px;
+    background-color:white;
+    *{
+      margin:20;
+      font-weight: 400;
+      font-size: 20px;
+      background-color:white;
+    }
+  }
+}
+.lunchBox:hover{
+  scale: 120%;
+}
+.lunchBox:nth-child(1) {
+  order: 1;
+}
+.lunchBox:nth-child(2) {
+  order: 3;
+}
+.lunchBox:nth-child(3) {
+  scale: 120%;
+  order: 2;
+}
+.lunchBox:hover ~ *{
+  scale: 100%;
+}
+
+.lunchBox-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+.red{
+  background-color: #FFD2BF;
+  * {
+    background-color:#FFD2BF;
+  }
+}
+.yellow{
+  background-color: #FDF4C5;
+  * {
+    background-color:#FDF4C5;
+  }
+}
+.green{
+  background-color: #C1EB7E;
+  * {
+    background-color:#C1EB7E;
   }
 }
