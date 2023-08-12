@@ -5,8 +5,9 @@
 * {
   font-family: 'Noto Sans KR', sans-serif;
   background-color: #f8f3e7;
-  border-radius: 10px;
-  margin: 5px;
+  // border-radius: 10px;
+  // margin: 5px;
+  margin: 0px;
 }
 
 .schedule-table {
@@ -196,7 +197,7 @@
     margin: 0;
   }
   #root {
-    margin: -10px;
+    // margin: -10px;
   }
   .dropdown-header {
     width: 50px;
@@ -293,6 +294,9 @@
       scale: 80%;
       margin:0px;
     }
+  }
+  .header>:nth-child(1){
+    display: none;
   }
 }
 
@@ -399,5 +403,44 @@
   background-color: #C1EB7E;
   * {
     background-color:#C1EB7E;
+  }
+}
+.header{
+  width: 100%;
+  position: fixed;
+  display: flex;
+  padding: 13px;
+  background-color: #FFF5DC;
+  height: 40px;
+  *{
+    background-color: #FFF5DC;
+  }
+  div{
+    flex: 1;
+  }
+  .header-title{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    font-family: 'Noto Sans KR', sans-serif;
+    img{
+      max-width: 50PX;
+    }
+    span{
+      margin-left: 10px;
+      font-weight: 600;      
+    }
+  }
+  .login-container{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    flex: 1;
+    margin-right: 40px;
+    *{
+      margin: 10px;
+    }
   }
 }
