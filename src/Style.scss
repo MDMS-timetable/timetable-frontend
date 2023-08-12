@@ -9,7 +9,10 @@
   // margin: 5px;
   margin: 0px;
 }
-
+a {
+ text-decoration: none;
+ color: #000000;
+}
 .schedule-table {
   width: 100%;
   table-layout: fixed;
@@ -131,7 +134,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin: 30px 0px;
+  margin: 90px 0px 0px 30px;
 }
 
 .title-size {
@@ -432,6 +435,7 @@
   display: flex;
   padding: 13px;
   background-color: #FFF5DC;
+  border-bottom: 0.5px solid rgb(146, 146, 146);
   height: 40px;
   *{
     background-color: #FFF5DC;
@@ -459,7 +463,8 @@
     align-items: center;
     justify-content: right;
     flex: 1;
-    margin-right: 40px;
+    margin-right: 80px;
+    margin-left: -40px;
     *{
       margin: 10px;
     }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Helmet } from "react-helmet";
 import axios from "axios";
+import Header from "../Components/Header"
 
 //Components
 import expend from "../img/expend.svg";
@@ -214,7 +215,7 @@ const TimeTable = () => {
     };
 
     return (
-        <div>
+        <div style={{display:"flex", flexDirection:"column"}}>
             <Helmet>
                 <link rel='icon' href={mdms} />
                 <meta name='description' content='만덕중학교 시간표를 확인할 수 있습니다.' />
@@ -233,7 +234,8 @@ const TimeTable = () => {
                 <meta name='og:url' content='https://mdms.bssm.kro.kr' />
                 <meta name='og:image' content={mdms} />
             </Helmet>
-
+            
+            <Header/>
             <div className='title'>
                 <div className='title-size'>
                     만덕중 {selectedGrade}-{selectedClass} 시간표
