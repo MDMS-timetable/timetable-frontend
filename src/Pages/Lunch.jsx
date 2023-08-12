@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import React, { useEffect } from 'react';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import axios from 'axios';
 
 function LunchBox(props) {
@@ -89,11 +90,15 @@ const Lunch = () => {
   // console.log((today_date.getDate()+1))
   return (
     <>
+      
       <div className='lunchBox-container'>
+        <FiChevronLeft size={70} onClick={()=>{setState(state-1)}}/>
         <LunchBox data={lunchData ? lunchData[state-1] : null} onClick={()=>{setState(state-1)}}/>
         <LunchBox data={lunchData ? lunchData[state+1] : null} onClick={()=>{setState(state+1)}}/>
         <LunchBox data={lunchData ? lunchData[state] : null } onClick={()=>{}}/>
+        <FiChevronRight size={70} onClick={()=>{setState(state+1)}}/>
       </div>
+      
         
         {/* {lunchData &&
           lunchData.map((item, index) => (
