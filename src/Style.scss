@@ -494,14 +494,13 @@ a {
     padding: 10px;
   }
 
-  .header-title{
+  .header .header-title{
     img{
       max-width: 35PX;
     }
     span{
       margin-left: 10px;
       font-weight: 500;
-      font-size: 25px;
     }
   }
 
@@ -518,7 +517,7 @@ a {
   }
 
   .lunchBox .menu > p {
-    font-size: 18px;
+    font-size: 15px;
   }
 
   .menu > p {
