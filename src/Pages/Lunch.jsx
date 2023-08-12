@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import axios from 'axios';
 import Header from "../Components/Header"
+import Footer from "../Components/Footer";
 function LunchBox(props) {
   const info = props.data
   let menu = "";
@@ -70,7 +71,7 @@ const Lunch = () => {
     axios
       .post(
         "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/lunch/mealinfo",
-        { month:  "2023" },
+        { month: currentDate.slice(0, 6) },
       )
       .then((response) => {
         setLunchData(response.data);
@@ -115,6 +116,7 @@ const Lunch = () => {
               <br></br>
             </div>
         ))}  */}
+        <Footer />
     </>
   );
 };

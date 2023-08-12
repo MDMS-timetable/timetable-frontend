@@ -136,7 +136,11 @@ a {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin: 95px 5px 5px 35px;
+  margin-top: 10px;
+}
+
+.table {
+  margin: 20px 40px;
 }
 
 .title-size {
@@ -146,7 +150,6 @@ a {
 
 .class {
   display: flex;
-  margin-bottom: 15px;
   align-items: center;
 }
 
@@ -239,7 +242,7 @@ a {
   }
 
   .schedule-item {
-    margin: 0 auto;
+    margin: 6px 0px;
   }
 
   .schedule-item div {
@@ -254,12 +257,20 @@ a {
     }
   }
 
-  .title {
-    margin: 10px 0px;
+  .table {
+    margin: 10px 20px;
+  }
+
+  .th-color > th {
+    padding: 3px 5px;
+  }
+
+  .dropdown-header {
+    margin: 0 auto;
   }
 
   .dropdown-text > img {
-    width: 20px;
+    width: 10px;
   }
 
   .dropdown-text {
@@ -437,12 +448,12 @@ a {
 }
 .header{
   width: 100%;
-  position: fixed;
   display: flex;
   padding: 13px;
   background-color: #FFF5DC;
   border-bottom: 0.5px solid rgb(146, 146, 146);
   height: 40px;
+  z-index: 1;
   *{
     background-color: #FFF5DC;
   }
@@ -461,7 +472,7 @@ a {
     }
     span{
       margin-left: 10px;
-      font-weight: 600;      
+      font-weight: 600;
     }
   }
   .login-container{
@@ -474,5 +485,43 @@ a {
     *{
       margin: 10px;
     }
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .header {
+    position: static;
+    padding: 10px;
+  }
+
+  .header-title{
+    img{
+      max-width: 35PX;
+    }
+    span{
+      margin-left: 10px;
+      font-weight: 500;
+      font-size: 25px;
+    }
+  }
+
+  .header .login-container {
+    margin: 0px 20px;
+  }
+
+  .lunchBox-container {
+    height: 550px;
+  }
+
+  .lunchBox .dayandKcal {
+    font-size: 16px;
+  }
+
+  .lunchBox .menu > p {
+    font-size: 18px;
+  }
+
+  .menu > p {
+    font-size: 18px;
   }
 }
