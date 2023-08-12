@@ -7,20 +7,26 @@ function LunchBox(props) {
   const info = props.data
   let menu = "";
   let menu_list = []
+  let year = "";
+  let month = "";
   let day = "";
   let kcal = 0
+  let kcal_num = 0
   let kcalColor = ''
   if (info){
     console.log(props.data)
     menu = info.lunch
     console.log(menu)
     menu_list = menu.split(' ');
-    day = info.date
-    kcal = info.calorie.replace("Kcal", "")
-    if (Number(kcal) >= 900){
+    year = info.date.year
+    month = info.date.month
+    day = info.date.day
+    kcal = info.calorie
+    kcal_num = Number(info.calorie.replace(" Kcal", ""))
+    if (kcal_num >= 900){
       kcalColor = 'red'
     }
-    else if (Number(kcal) >= 800){
+    else if (kcal_num >= 800){
       kcalColor = 'yellow'
     }
     else {
@@ -36,7 +42,7 @@ function LunchBox(props) {
     <div onClick={()=>props.onClick()} className={`lunchBox`}>
       {/* 요일, 칼로리 */}
       <div className={`${kcalColor} dayandKcal`}>
-          <span>{day}</span>
+          <span>{Number(month)}월 {Number(day)}일 </span>
           <span>{kcal}</span>
       </div>
       <div className={"menu_container"}>
@@ -64,7 +70,7 @@ const Lunch = () => {
     axios
       .post(
         "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/lunch/mealinfo",
-        { month:  currentDate.slice(0, 6) },
+        { month:  "2023" },
       )
       .then((response) => {
         setLunchData(response.data);

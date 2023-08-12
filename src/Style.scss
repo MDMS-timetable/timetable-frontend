@@ -192,7 +192,7 @@
   width: 70px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 860px) {
   body {
     margin: 0;
   }
@@ -283,26 +283,45 @@
   .info > div {
     width: 90px;
   }
+  .lunchBox-container>:nth-child(1) {
+    max-width: 50px;
+    margin: 50px;
+    background-color: none;
+  }
   .lunchBox-container>:nth-child(2) {
-    display: none;
+    transition: 0s;
+    visibility: hidden;
+    flex: 0;
+    width: 50px;
   }
   .lunchBox-container>:nth-child(3) {
-    display: none;
+    transition: 0s;
+    visibility: hidden;
+    flex: 0;
+    width: 50px;
   }
+  .lunchBox-container>:nth-child(5) {
+    max-width: 50px;
+    background-color: none;
+  }
+  
   .menu{
     *{
-      scale: 80%;
+      font-size: 21px;
       margin:0px;
     }
   }
   .header>:nth-child(1){
     display: none;
   }
+  .lunchBox{
+    margin: 50px;
+  }
 }
 
 .lunchBox {
   width:22rem;
-  margin: 35px;
+  margin: 2%;
   background-color:white;;
   border-radius: 30px;
   box-shadow:0px 0px 17px rgba(0, 0, 0, 0.1);
@@ -336,9 +355,10 @@
     border-radius: 30px;
     background-color:white;
     *{
+      margin-bottom: 4px;
       margin:20;
       font-weight: 400;
-      font-size: 20px;
+      font-size: 21px;
       background-color:white;
     }
   }
@@ -351,8 +371,9 @@
 .lunchBox-container>:nth-child(1) {
   order: 1;
   color: #777777;
-  margin: 5vw;
   transition: .2s;
+  margin: 0 0 0 1%;
+
   &:hover{
     color: #585858;
   }
@@ -360,7 +381,7 @@
 .lunchBox-container>:nth-child(5) {
   order: 5;
   color: #777777;
-  margin: 5vw;
+  margin: 1% 0 0 0; 
   transition: .2s;
   &:hover{
     color: #585858;
