@@ -282,6 +282,18 @@
   .info > div {
     width: 90px;
   }
+  .lunchBox-container>:nth-child(2) {
+    display: none;
+  }
+  .lunchBox-container>:nth-child(3) {
+    display: none;
+  }
+  .menu{
+    *{
+      scale: 80%;
+      margin:0px;
+    }
+  }
 }
 
 .lunchBox {
@@ -326,6 +338,7 @@
       background-color:white;
     }
   }
+  
 }
 .lunchBox-container>:hover{
   cursor:pointer;

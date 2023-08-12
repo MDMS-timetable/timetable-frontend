@@ -77,7 +77,7 @@ const Lunch = () => {
         }
       });
   }, []);
-  // console.log(lunchData)
+  console.log(lunchData)
   // let nextMonthLastDate = new Date(
   //   Number(_year), 
   //   Number(_month)
