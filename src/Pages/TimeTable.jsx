@@ -154,7 +154,7 @@ const TimeTable = () => {
         }
 
         return (
-            <div>
+            <div style={{margin: "20px 40px"}}>
                 <table className='schedule-table'>
                     <thead>
                         <tr className='th-color'>
