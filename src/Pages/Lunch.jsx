@@ -59,10 +59,8 @@ function LunchBox(props) {
   )
 }
 
-
-
 const Lunch = () => {
-  const todayDate = new Date("2023 08 18")
+  const todayDate = new Date("2023 08 16")
   const [needDate, SetNeedDate] = useState(todayDate)
   const [lunchData, setLunchData] = useState();
   const [lunchDataList, setLunchDataList] = useState([]);
@@ -87,31 +85,20 @@ const Lunch = () => {
       });
   }
   function changeNeedTime(number) {
-    SetNeedDate(needDate + 24 * 60 * 60 * 1000 * number);
-  }
-  useEffect(()=>{
     var needDate_ = new Date(needDate)
-    for (let i=0; i<3; i++){
-      console.log(needDate_)
-      var dateString = needDate_.toLocaleDateString('ko-KR', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/[^0-9]/g, '');
-      getLunchInfo(dateString)
-      needDate_ = new Date(needDate_.getTime() + 24 * 60 * 60 * 1000 * -1);
-      console.log(needDate_)
-      changeNeedTime(-1)
-      console.log(dateString)
-      console.log("lunchDataList:")
-      console.log(lunchDataList)
-    }
-  }, [needDate])
+    var needDate_ = new Date(needDate_.getTime() + 24 * 60 * 60 * 1000 * number);
+    var dateString = needDate_.toLocaleDateString('ko-KR', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/[^0-9]/g, '');
+    getLunchInfo(dateString)
+  }
   useEffect(() => {
     var needDate_ = new Date(needDate)
     for (let i=0; i<3; i++){
       console.log(needDate_)
       var dateString = needDate_.toLocaleDateString('ko-KR', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/[^0-9]/g, '');
       getLunchInfo(dateString)
-      needDate_ = new Date(needDate_.getTime() + 24 * 60 * 60 * 1000 * -1);
+      needDate_ = new Date(needDate_.getTime() + 24 * 60 * 60 * 1000);
       console.log(needDate_)
-      changeNeedTime(-1)
+      // changeNeedTime(-1)
       console.log(dateString)
       console.log("lunchDataList:")
       console.log(lunchDataList)
