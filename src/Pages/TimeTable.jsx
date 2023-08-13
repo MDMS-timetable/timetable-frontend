@@ -154,7 +154,7 @@ const TimeTable = () => {
         }
 
         return (
-            <div>
+            <div className="table">
                 <table className='schedule-table'>
                     <thead>
                         <tr className='th-color'>
@@ -238,7 +238,7 @@ const TimeTable = () => {
             <Header/>
             <div className='title'>
                 <div className='title-size'>
-                    만덕중 {selectedGrade}-{selectedClass} 시간표
+                {selectedGrade && selectedClass ? `${selectedGrade}-${selectedClass}` : '만덕중 '} 시간표
                 </div>
 
                 <div className='class'>

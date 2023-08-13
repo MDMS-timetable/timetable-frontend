@@ -71,7 +71,7 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  margin: 0 auto;
+  margin: 10px;
   font-size: 20px;
   display: flex;
   justify-content: center;
@@ -82,10 +82,12 @@ a {
   float: left;
   text-align: center;
   align-items: center;
+  margin: 10px 5px;
 }
 
 .dropdown-text > div {
   width: 30px;
+  margin: 5px;
 }
 
 .dropdown-list {
@@ -134,7 +136,11 @@ a {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin: 90px 0px 0px 30px;
+  margin-top: 10px;
+}
+
+.table {
+  margin: 20px 40px;
 }
 
 .title-size {
@@ -148,6 +154,7 @@ a {
 }
 
 #class-text {
+  margin: 5px;
   font-size: x-large;
 }
 
@@ -160,7 +167,7 @@ a {
 }
 
 .info {
-  margin-top: 25px;
+  margin: 20px 0px;
   font-size: 20px;
   font-weight: bold;
   display: flex;
@@ -183,6 +190,7 @@ a {
 
 .link img {
   width: 30px;
+  margin: 10px;
 }
 
 .last-text {
@@ -193,6 +201,7 @@ a {
 
 .anys {
   width: 70px;
+  margin: 10px;
 }
 
 @media screen and (max-width: 860px) {
@@ -233,7 +242,7 @@ a {
   }
 
   .schedule-item {
-    margin: 0 auto;
+    margin: 6px 0px;
   }
 
   .schedule-item div {
@@ -248,12 +257,20 @@ a {
     }
   }
 
-  .title {
-    margin: 10px 0px;
+  .table {
+    margin: 10px 20px;
+  }
+
+  .th-color > th {
+    padding: 3px 5px;
+  }
+
+  .dropdown-header {
+    margin: 0 auto;
   }
 
   .dropdown-text > img {
-    width: 20px;
+    width: 10px;
   }
 
   .dropdown-text {
@@ -431,12 +448,12 @@ a {
 }
 .header{
   width: 100%;
-  position: fixed;
   display: flex;
   padding: 13px;
   background-color: #FFF5DC;
   border-bottom: 0.5px solid rgb(146, 146, 146);
   height: 40px;
+  z-index: 1;
   *{
     background-color: #FFF5DC;
   }
@@ -455,7 +472,7 @@ a {
     }
     span{
       margin-left: 10px;
-      font-weight: 600;      
+      font-weight: 600;
     }
   }
   .login-container{
@@ -469,5 +486,42 @@ a {
     *{
       margin: 10px;
     }
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .header {
+    position: static;
+    padding: 10px;
+  }
+
+  .header .header-title{
+    img{
+      max-width: 35PX;
+    }
+    span{
+      margin-left: 10px;
+      font-weight: 500;
+    }
+  }
+
+  .header .login-container {
+    margin: 0px 20px;
+  }
+
+  .lunchBox-container {
+    height: 550px;
+  }
+
+  .lunchBox .dayandKcal {
+    font-size: 16px;
+  }
+
+  .lunchBox .menu > p {
+    font-size: 15px;
+  }
+
+  .menu > p {
+    font-size: 18px;
   }
 }
