@@ -14,16 +14,17 @@ function LunchBox(props) {
   let kcal = 0
   let kcal_num = 0
   let kcalColor = ''
-  if (info){
-    console.log(props.data)
-    menu = info.lunch
+  console.log(info)
+  if (info!=undefined){
+    console.log(info[0].date)
+    menu = info[0].lunch
     console.log(menu)
     menu_list = menu.split(' ');
-    year = info.date.year
-    month = info.date.month
-    day = info.date.day
-    kcal = info.calorie
-    kcal_num = Number(info.calorie.replace(" Kcal", ""))
+    year = info[0].date.year
+    month = info[0].date.month
+    day = info[0].date.day
+    kcal = info[0].calorie
+    kcal_num = Number(info[0].calorie.replace(" Kcal", ""))
     if (kcal_num >= 900){
       kcalColor = 'red'
     }
@@ -58,23 +59,24 @@ function LunchBox(props) {
   )
 }
 
+
+
 const Lunch = () => {
-  let today_date = new Date()
-  let _year = String(today_date.getFullYear());	
-  let _month = String(today_date.getMonth()+1).padStart(2, "0");	
-  let _date = String(today_date.getDate());
+  const todayDate = new Date("2023 08 18")
+  const [needDate, SetNeedDate] = useState(todayDate)
   const [lunchData, setLunchData] = useState();
-  const [currentDate, setCurrentDate] = useState(_year+_month+_date);
-  const [state, setState] = useState(0)
-  console.log(currentDate.slice(0, 6))
-  useEffect(() => {
+  const [lunchDataList, setLunchDataList] = useState([]);
+
+  function getLunchInfo(month_) {
     axios
       .post(
         "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/lunch/mealinfo",
-        { month: currentDate.slice(0, 6) },
+        { month: month_ },
       )
       .then((response) => {
-        setLunchData(response.data);
+        setLunchData(response.data)
+        lunchDataList.push(response.data);
+        setLunchDataList(lunchDataList);
       })
       .catch((error) => {
         if (axios.isCancel(error)) {
@@ -83,39 +85,50 @@ const Lunch = () => {
           console.log(error);
         }
       });
+  }
+  function changeNeedTime(number) {
+    SetNeedDate(needDate + 24 * 60 * 60 * 1000 * number);
+  }
+  useEffect(()=>{
+    var needDate_ = new Date(needDate)
+    for (let i=0; i<3; i++){
+      console.log(needDate_)
+      var dateString = needDate_.toLocaleDateString('ko-KR', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/[^0-9]/g, '');
+      getLunchInfo(dateString)
+      needDate_ = new Date(needDate_.getTime() + 24 * 60 * 60 * 1000 * -1);
+      console.log(needDate_)
+      changeNeedTime(-1)
+      console.log(dateString)
+      console.log("lunchDataList:")
+      console.log(lunchDataList)
+    }
+  }, [needDate])
+  useEffect(() => {
+    var needDate_ = new Date(needDate)
+    for (let i=0; i<3; i++){
+      console.log(needDate_)
+      var dateString = needDate_.toLocaleDateString('ko-KR', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/[^0-9]/g, '');
+      getLunchInfo(dateString)
+      needDate_ = new Date(needDate_.getTime() + 24 * 60 * 60 * 1000 * -1);
+      console.log(needDate_)
+      changeNeedTime(-1)
+      console.log(dateString)
+      console.log("lunchDataList:")
+      console.log(lunchDataList)
+    }
+      
   }, []);
-  console.log(lunchData)
-  // let nextMonthLastDate = new Date(
-  //   Number(_year), 
-  //   Number(_month)
-  //   , 0
-  // )
-  // console.log("length"+(nextMonthLastDate.getDate()-lunchData.length))
-  // console.log(nextMonthLastDate.getDate())
-  // console.log(today_date.getMonth())
-  // console.log(today_date.getDate())
-  // console.log((today_date.getDate()+1))
+  
   return (
     <>
       <Header/>
       <div className='lunchBox-container'>
-        <FiChevronLeft size={70} onClick={()=>{setState(state-1)}}/>
-        <LunchBox data={lunchData ? lunchData[state-1] : null} onClick={()=>{setState(state-1)}}/>
-        <LunchBox data={lunchData ? lunchData[state+1] : null} onClick={()=>{setState(state+1)}}/>
-        <LunchBox data={lunchData ? lunchData[state] : null } onClick={()=>{}}/>
-        <FiChevronRight size={70} onClick={()=>{setState(state+1)}}/>
+        <FiChevronLeft size={70} onClick={()=>{changeNeedTime(-1)}}/>
+        <LunchBox data={lunchDataList ? lunchDataList[0] : null} onClick={()=>{changeNeedTime(-1)}}/>
+        <LunchBox data={lunchDataList ? lunchDataList[2] : null} onClick={()=>{changeNeedTime(+1)}}/>
+        <LunchBox data={lunchDataList ? lunchDataList[1] : null } onClick={()=>{}}/>
+        <FiChevronRight size={70} onClick={()=>{changeNeedTime(+1)}}/>
       </div>
-      
-        
-        {/* {lunchData &&
-          lunchData.map((item, index) => (
-            <div key={index}>
-              <div>{item.date}</div>
-              <div>{item.lunch}</div>
-              <div>{item.calorie}</div>
-              <br></br>
-            </div>
-        ))}  */}
         <Footer />
     </>
   );
