@@ -59,13 +59,18 @@ function LunchBox(props) {
   )
 }
 
+function sleep(ms) {
+  const wakeUpTime = Date.now() + ms;
+  while (Date.now() < wakeUpTime) {}
+}
+
 const Lunch = () => {
-  const todayDate = new Date("2023 08 16")
+  const todayDate = new Date("2023 05 10")
   const [needDate, SetNeedDate] = useState(todayDate)
   const [lunchData, setLunchData] = useState();
   const [lunchDataList, setLunchDataList] = useState([]);
-
-  function getLunchInfo(month_) {
+  const [state, setState] = useState(1)
+  function getLunchInfo(month_, isPush=true) {
     axios
       .post(
         "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/lunch/mealinfo",
@@ -73,10 +78,22 @@ const Lunch = () => {
       )
       .then((response) => {
         setLunchData(response.data)
-        lunchDataList.push(response.data);
+        if (isPush){
+          lunchDataList.push(response.data);
+        }
+        else{
+          lunchDataList.unshift(response.data);
+        }
         setLunchDataList(lunchDataList);
+        console.log(lunchDataList)
       })
       .catch((error) => {
+        if (isPush){
+          lunchDataList.push(null);
+        }
+        else{
+          lunchDataList.unshift(null);
+        }
         if (axios.isCancel(error)) {
           console.log("Request canceled", error.message);
         } else {
@@ -85,10 +102,25 @@ const Lunch = () => {
       });
   }
   function changeNeedTime(number) {
-    var needDate_ = new Date(needDate)
-    var needDate_ = new Date(needDate_.getTime() + 24 * 60 * 60 * 1000 * number);
-    var dateString = needDate_.toLocaleDateString('ko-KR', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/[^0-9]/g, '');
-    getLunchInfo(dateString)
+    if (state+2 >= lunchDataList.length && number==1){
+      var needDate_ = new Date(needDate)
+      var needDate_ = new Date(needDate_.getTime() + 24 * 60 * 60 * 1000 * number);
+      var dateString = needDate_.toLocaleDateString('ko-KR', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/[^0-9]/g, '');
+      getLunchInfo(dateString)
+      SetNeedDate(needDate_)
+      setState(state+1)
+    }
+    else if (state <= 1 && number==-1){
+      var needDate_ = new Date(needDate)
+      var needDate_ = new Date(needDate_.getTime() + 24 * 60 * 60 * 1000 * number);
+      var dateString = needDate_.toLocaleDateString('ko-KR', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/[^0-9]/g, '');
+      getLunchInfo(dateString, false)
+      SetNeedDate(needDate_)
+    }
+    else{
+      setState(state+1)
+    }
+    
   }
   useEffect(() => {
     var needDate_ = new Date(needDate)
@@ -102,6 +134,7 @@ const Lunch = () => {
       console.log(dateString)
       console.log("lunchDataList:")
       console.log(lunchDataList)
+      sleep(80)
     }
       
   }, []);
@@ -111,9 +144,9 @@ const Lunch = () => {
       <Header/>
       <div className='lunchBox-container'>
         <FiChevronLeft size={70} onClick={()=>{changeNeedTime(-1)}}/>
-        <LunchBox data={lunchDataList ? lunchDataList[0] : null} onClick={()=>{changeNeedTime(-1)}}/>
-        <LunchBox data={lunchDataList ? lunchDataList[2] : null} onClick={()=>{changeNeedTime(+1)}}/>
-        <LunchBox data={lunchDataList ? lunchDataList[1] : null } onClick={()=>{}}/>
+        <LunchBox data={lunchDataList ? lunchDataList[state-1] : null} onClick={()=>{changeNeedTime(-1)}}/>
+        <LunchBox data={lunchDataList ? lunchDataList[state+1] : null} onClick={()=>{changeNeedTime(+1)}}/>
+        <LunchBox data={lunchDataList ? lunchDataList[state] : null } onClick={()=>{}}/>
         <FiChevronRight size={70} onClick={()=>{changeNeedTime(+1)}}/>
       </div>
         <Footer />
