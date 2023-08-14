@@ -6,6 +6,7 @@ import Header from "../Components/Header"
 import Footer from "../Components/Footer";
 function LunchBox(props) {
   const info = props.data
+  const days = props.day
   let menu = "";
   let menu_list = []
   let year = "";
@@ -14,13 +15,13 @@ function LunchBox(props) {
   let kcal = 0
   let kcal_num = 0
   let kcalColor = ''
-  console.log(info)
+  console.log(days)
   if (info!=undefined){
     console.log(info[0].date)
     menu = info[0].lunch
     console.log(menu)
     menu_list = menu.split(' ');
-    year = info[0].date.year
+    year = days.getFullYear()
     month = info[0].date.month
     day = info[0].date.day
     kcal = info[0].calorie
@@ -66,7 +67,9 @@ function sleep(ms) {
 
 const Lunch = () => {
   const todayDate = new Date("2023 05 10")
-  const [needDate, SetNeedDate] = useState(todayDate)
+  const [leftDate, setLeftDate] = useState(todayDate)
+  const [rightDate, setRightDate] = useState(todayDate)
+  const [needDate, setNeedDate] = useState(todayDate)
   const [lunchData, setLunchData] = useState();
   const [lunchDataList, setLunchDataList] = useState([]);
   const [state, setState] = useState(1)
@@ -84,28 +87,23 @@ const Lunch = () => {
         else{
           lunchDataList.unshift(response.data);
         }
-        setLunchDataList(lunchDataList);
-        console.log(lunchDataList)
       })
       .catch((error) => {
-        if (isPush){
-          lunchDataList.push(null);
-        }
-        else{
-          lunchDataList.unshift(null);
-        }
         if (axios.isCancel(error)) {
           console.log("Request canceled", error.message);
         } else {
           console.log(error);
         }
+        
       });
+      setLunchDataList(lunchDataList);
   }
   function changeNeedTime(number) {
     if (state+2 >= lunchDataList.length && number==1){
       var needDate_ = new Date(needDate)
       var needDate_ = new Date(needDate_.getTime() + 24 * 60 * 60 * 1000 * number);
-      var dateString = needDate_.toLocaleDateString('ko-KR', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/[^0-9]/g, '');
+      var needDate_temp = new Date(needDate_.getTime() + 24 * 60 * 60 * 1000 * number);
+      var dateString = needDate_temp.toLocaleDateString('ko-KR', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/[^0-9]/g, '');
       getLunchInfo(dateString)
       SetNeedDate(needDate_)
       setState(state+1)
@@ -113,17 +111,19 @@ const Lunch = () => {
     else if (state <= 1 && number==-1){
       var needDate_ = new Date(needDate)
       var needDate_ = new Date(needDate_.getTime() + 24 * 60 * 60 * 1000 * number);
-      var dateString = needDate_.toLocaleDateString('ko-KR', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/[^0-9]/g, '');
+      var needDate_temp = new Date(needDate_.getTime() + 24 * 60 * 60 * 1000 * number);
+      var dateString = needDate_temp.toLocaleDateString('ko-KR', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/[^0-9]/g, '');
       getLunchInfo(dateString, false)
       SetNeedDate(needDate_)
     }
     else{
-      setState(state+1)
+      setState(state+number)
     }
-    
+    console.log(lunchDataList)
   }
   useEffect(() => {
     var needDate_ = new Date(needDate)
+    needDate_ = new Date(needDate_.getTime() + 24 * 60 * 60 * 1000 * -1);
     for (let i=0; i<3; i++){
       console.log(needDate_)
       var dateString = needDate_.toLocaleDateString('ko-KR', {year: 'numeric', month: '2-digit', day: '2-digit'}).replace(/[^0-9]/g, '');
@@ -136,7 +136,6 @@ const Lunch = () => {
       console.log(lunchDataList)
       sleep(80)
     }
-      
   }, []);
   
   return (
@@ -144,9 +143,9 @@ const Lunch = () => {
       <Header/>
       <div className='lunchBox-container'>
         <FiChevronLeft size={70} onClick={()=>{changeNeedTime(-1)}}/>
-        <LunchBox data={lunchDataList ? lunchDataList[state-1] : null} onClick={()=>{changeNeedTime(-1)}}/>
-        <LunchBox data={lunchDataList ? lunchDataList[state+1] : null} onClick={()=>{changeNeedTime(+1)}}/>
-        <LunchBox data={lunchDataList ? lunchDataList[state] : null } onClick={()=>{}}/>
+        <LunchBox day={Date(needDate.getTime() + 24 * 60 * 60 * 1000 * -1)} data={lunchDataList ? lunchDataList[state-1] : null} onClick={()=>{changeNeedTime(-1)}}/>
+        <LunchBox day={Date(needDate.getTime() + 24 * 60 * 60 * 1000 * +1)} data={lunchDataList ? lunchDataList[state+1] : null} onClick={()=>{changeNeedTime(+1)}}/>
+        <LunchBox day={needDate} data={lunchDataList ? lunchDataList[state] : null } onClick={()=>{}}/>
         <FiChevronRight size={70} onClick={()=>{changeNeedTime(+1)}}/>
       </div>
         <Footer />
