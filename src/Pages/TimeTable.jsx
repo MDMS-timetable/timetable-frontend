@@ -310,7 +310,7 @@ const TimeTable = () => {
           content="만덕중학교 시간표를 확인할 수 있습니다."
         />
         <meta name="og:type" content="website" />
-        <meta name="og:url" content="https://mdms.bssm.kro.kr" />
+        <meta name="og:url" content="https://mdms.anys.kro.kr" />
         <meta name="og:image" content={mdms} />
       </Helmet>
 
