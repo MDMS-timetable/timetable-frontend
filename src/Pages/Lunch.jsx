@@ -1,14 +1,21 @@
 import { addDays, subDays } from "date-fns";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import Meal from "../Components/Meal";
 import useLunchQuery from "../Hooks/useLunchQuery";
+import axios from "axios";
 
 const Lunch = () => {
   const [lunchDate, setLunchDate] = useState(new Date());
   const { data: lunchList } = useLunchQuery(lunchDate);
+
+  useEffect(() => {
+    axios.get(
+      "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/hits/meal",
+    );
+  }, []);
 
   const postNextLunch = () => {
     setLunchDate(addDays(lunchDate, 1));

@@ -34,6 +34,10 @@ const TimeTable = () => {
       setSelectedGrade(storedGrade);
       setSelectedClass(storedClass);
     }
+
+    axios.get(
+      "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/hits/timetable",
+    );
   }, []);
 
   useEffect(() => {
@@ -51,7 +55,7 @@ const TimeTable = () => {
         .post(
           "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/viewtimetable",
           { grade: selectedGrade, class: selectedClass },
-          { cancelToken: cancelToken.current.token }
+          { cancelToken: cancelToken.current.token },
         )
         .then((response) => {
           setTimeTableData(response.data);
@@ -67,7 +71,7 @@ const TimeTable = () => {
 
     axios
       .get(
-        "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/schedule"
+        "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/schedule",
       )
       .then((response) => {
         let newData = response.data.map((item) => item.split("("));
