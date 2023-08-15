@@ -7,7 +7,7 @@ import Meal from "../Components/Meal";
 import useLunchQuery from "../Hooks/useLunchQuery";
 
 const Lunch = () => {
-  const [lunchDate, setLunchDate] = useState(new Date(2023, 5, 15));
+  const [lunchDate, setLunchDate] = useState(new Date());
   const { data: lunchList } = useLunchQuery(lunchDate);
 
   const postNextLunch = () => {
