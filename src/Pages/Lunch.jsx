@@ -7,22 +7,26 @@ import Footer from "../Components/Footer";
 import Meal from "../Components/Meal";
 
 const Lunch = () => {
-  const date = new Date(2023, 5, 14);
+  const date = new Date();
   const [lunchList, setLunchList] = useState([]);
   const [lunchIndex, setLunchIndex] = useState(1);
 
   const callLunch = (props) => {
     axios
-      .post(
+      .get(
         "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/lunch/mealinfo",
         {
-          start: props.start ? format(props.start, "yyyyMMdd") : null,
-          end: props.end ? format(props.end, "yyyyMMdd") : null,
-          date: props.date ? format(props.date, "yyyyMMdd") : null,
-        },
+          params: { date:"2023", start:null, end:null }
+        }, 
       )
       .then((response) => {
         if (!props.date) {
+          console.log(response.data)
+          response.data.map((value, index) =>{
+            if (Number(value.date.month) == date.getMonth()+1 && Number(value.date.month) == date.getDay()){
+              setLunchIndex(index)
+            }
+          })
           return setLunchList(response.data);
         }
         if (!lunchList) {
@@ -32,22 +36,9 @@ const Lunch = () => {
           console.log("급식 데이터가 없습니다.");
           return;
         }
-
-        if (lunchIndex === 0) {
-          setLunchList(lunchList.unshift(response.data));
-          return setLunchIndex(1);
-        } else {
-          return setLunchList(lunchList.push(response.data));
-        }
       })
       .catch((error) => {
         console.log(error)
-        if (lunchIndex === 0) {
-          setLunchList(lunchList.unshift(undefined));
-          return setLunchIndex(1);
-        } else {
-          return setLunchList(lunchList.push(undefined));
-        }
       });
       
   };
@@ -95,11 +86,11 @@ const Lunch = () => {
         />
         <Meal
           meal={lunchList[lunchIndex - 1] ? lunchList[lunchIndex - 1] : null}
-          onClick={() => setLunchIndex(lunchIndex - 1)}
+          onclick={() => setLunchIndex(lunchIndex - 1)}
         />
         <Meal
           meal={lunchList[lunchIndex + 1] ? lunchList[lunchIndex + 1] : null}
-          onClick={() => setLunchIndex(lunchIndex + 1)}
+          onclick={() => setLunchIndex(lunchIndex + 1)}
         />
         <Meal meal={lunchList[lunchIndex] ? lunchList[lunchIndex] : null} />
         <FiChevronRight

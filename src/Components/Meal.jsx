@@ -1,6 +1,7 @@
 import React from "react";
 
-const Meal = ({ meal }) => {
+const Meal = (props) => {
+  let meal = props.meal
   console.log(meal);
   let kcalColor = "";
   let kcal_num = 0;
@@ -20,7 +21,7 @@ const Meal = ({ meal }) => {
   }
 
   return (
-    <div className={`lunchBox`}>
+    <div onClick={props.onclick} className={`lunchBox`}>
       {/* 요일, 칼로리 */}
       <div className={`${kcalColor} dayandKcal`}>
         <span>
