@@ -71,7 +71,7 @@ const TimeTable = () => {
 
     axios
       .get(
-        "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/schedule",
+        "https://mdmsback.anys.kro.kr/schedule",
       )
       .then((response) => {
         let newData = response.data.map((item) => item.split("("));
