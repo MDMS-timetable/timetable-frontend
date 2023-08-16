@@ -36,7 +36,7 @@ const TimeTable = () => {
     }
 
     axios.get(
-      "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/hits/timetable",
+      "https://mdmsback.anys.kro.kr/hits/timetable",
     );
   }, []);
 
@@ -53,7 +53,7 @@ const TimeTable = () => {
     if (selectedGrade && selectedClass) {
       axios
         .post(
-          "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/viewtimetable",
+          "https://mdmsback.anys.kro.kr/viewtimetable",
           { grade: selectedGrade, class: selectedClass },
           { cancelToken: cancelToken.current.token },
         )

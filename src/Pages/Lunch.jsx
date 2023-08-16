@@ -15,7 +15,7 @@ const Lunch = () => {
 
   useEffect(() => {
     axios.get(
-      "https://port-0-timetable-backend-kvmh2mlk183p67.sel4.cloudtype.app/hits/meal",
+      "https://mdmsback.anys.kro.kr/hits/meal",
     );
   }, []);
 
