@@ -285,6 +285,7 @@ const TimeTable = () => {
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Helmet>
         <link rel="icon" href={mdms} />
+        <meta title="만덕중 시간표"></meta>
         <meta
           name="description"
           content="만덕중학교 시간표를 확인할 수 있습니다."

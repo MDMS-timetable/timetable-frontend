@@ -33,6 +33,7 @@ const Lunch = () => {
     <>
       <Helmet>
         <link rel="icon" href={mdms} />
+        <meta title="만덕중 급식표"></meta>
         <meta
           name="description"
           content="만덕중학교 급식표를 확인할 수 있습니다."
