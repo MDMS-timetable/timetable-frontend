@@ -285,6 +285,7 @@ const TimeTable = () => {
     <div style={{ display: "flex", flexDirection: "column" }}>
       <Helmet>
         <link rel="icon" href={mdms} />
+        <title>만덕중 시간표</title>
         <meta title="만덕중 시간표"></meta>
         <meta
           name="description"
