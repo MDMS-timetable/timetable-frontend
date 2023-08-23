@@ -16,18 +16,18 @@ const Footer = () => {
 
                 <div className='link'>
                     <a href='https://www.instagram.com/an.ys_34/' target='_blank' rel='noreferrer'>
-                        <img className='insta' src={instagram} alt=''></img>
+                        <img className='insta' src={instagram} alt='' rel="nofollow"></img>
                     </a>
                     <div className='line'></div>
                     <a href='https://github.com/anys34' target='_blank' rel='noreferrer'>
-                        <img className='github' src={github} alt=''></img>
+                        <img className='github' src={github} alt='' rel="nofollow"></img>
                     </a>
                 </div>
 
                 <div className='last-text'>
                     <div>@2023 MDMS-TimeTalbe from</div>
                     <div className='anys'>
-                        <img src={anys} alt=''></img>
+                        <img src={anys} alt='' rel="nofollow"></img>
                     </div>
                 </div>
             </div>
